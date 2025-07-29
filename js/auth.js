@@ -25,7 +25,7 @@ function register() {
     fetch("api/reg.php", {method:"POST", body:data})
     .then(HandleResponse)
     .then((data)=>{
-
+        window.location.href = "login.html"; 
     })
 
     

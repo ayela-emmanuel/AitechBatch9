@@ -15,5 +15,25 @@ try {
 }
 
 
+function INSERT(string $table, array $kvp ){
+    global $connection;
+    $keys = implode(", ",array_keys($kvp));
+    
+    // ["A", "b","c"]
+    // "A,b,c"
+    $vals = [];
+    foreach ($kvp as $data) {
+        $vals[] = "?";
+    }
+    $vals = implode(", ",$vals);
+    $query = "INSERT INTO `$table` ($keys) VALUES ($vals)";
+    $stmt = $connection->prepare($query);
+    
+    if($stmt->execute(array_values($kvp))){
+       return $stmt->affected_rows>0;
+    }
+    return false;
+}
+
 
 ?>
