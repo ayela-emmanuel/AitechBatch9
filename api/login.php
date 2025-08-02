@@ -31,10 +31,10 @@ $user = $result->fetch_assoc();
 
 if($user != null && password_verify($password,$user["password"])){
     $data = [
-        $user["firstname"],
-        $user["lastname"],
-        $user["email"],
-        $user["id"],
+        "firstname"=>$user["firstname"],
+        "lastname"=>$user["lastname"],
+        "email"=>$user["email"],
+        "id"=>$user["id"],
     ];
     $_SESSION["user"] = $data;
     respond("Loggedin", $data);

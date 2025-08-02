@@ -43,6 +43,10 @@ function login() {
     fetch("api/login.php", {method:"POST", body:data})
     .then(HandleResponse)
     .then((data)=>{
+        if(data){
+            window.location.href = "index.html"; 
+
+        }
 
     })
 }
